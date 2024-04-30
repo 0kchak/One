@@ -16,7 +16,7 @@ import Room from "./pages/room";
 import Page1 from "./pages/one_page";
 
 // Paramétrage pour l'envoi des requêtes
-axios.defaults.baseURL = "http://localhost:8000";
+axios.defaults.baseURL = "https://one-server-iota.vercel.app/";
 axios.defaults.withCredentials = true;
 
 function App() {
