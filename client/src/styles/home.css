@@ -1,0 +1,17 @@
+.Lefthome {
+  padding-bottom: 5rem;
+  flex: 2;
+  border-radius: 2.3rem 0 0 2.3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.texthome-center {
+  margin: 4rem 2rem 2rem;
+}
+
+.line {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}

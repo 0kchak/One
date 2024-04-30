@@ -1,0 +1,279 @@
+.board {
+  height: 100vh;
+  background-image: url("src/assets/board/Fond.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.hands {
+  height: 100vh;
+}
+
+/*
+.handback_ip{
+    display: flex;
+    justify-content : center;
+    transform: rotate(180deg);
+    
+}
+
+.handback_pp{
+    display: flex;
+    justify-content : center;
+    transform: rotate(180deg);
+    
+}*/
+
+.flex-container {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+  flex-direction: column;
+}
+
+.divs {
+  /*margin: 3px;*/
+  /*background-color: yellow;*/
+  overflow: hidden;
+}
+
+.container_otherplayer {
+  /* background-color: red; */
+  flex: 4;
+  display: flex;
+}
+
+.container_player {
+  flex: 3;
+  /* background: aquamarine; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.divlefttest {
+  flex: 1;
+  /* background-color: beige; */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.divmidtest {
+  flex: 5;
+  /* background-color: violet; */
+  display: flex;
+  flex-direction: column;
+}
+
+.divrighttest {
+  flex: 1;
+  /* background-color: forestgreen; */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.divtoptest {
+  flex: 2;
+  /* background-color: brown; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.divbottomtest {
+  flex: 5;
+  /* background-color: darkviolet; */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 5%;
+}
+
+.divmid {
+  flex: 9;
+  /*background-color: red;*/
+  display: flex;
+  flex-direction: column;
+}
+
+/*Pour la partie gauche*/
+.divleft {
+  flex: 2;
+  display: flex;
+  flex-direction: row;
+}
+
+.divright {
+  flex: 2;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  /*background-color: blue;*/
+}
+
+/*Et la div prendra un ratio de 2 par rapport au autres div row, Centre le contenu */
+.divrowtop,
+.divrowbottom {
+  flex: 2;
+  /*background-color: blue;*/
+  display: flex;
+  justify-content: center;
+}
+
+/*Aligne le contenu vers le bas de la flexbox (ici ça position en y)*/
+.divrowtop {
+  align-items: flex-start;
+}
+
+/*Aligne le contenu vers le haut de la flexbox (ici ça position en y)*/
+.divrowbottom {
+  align-items: flex-end;
+}
+
+/*Et la div prendra un ratio de 2 par rapport au autres div row, Centre le contenu */
+.divrowmid {
+  flex: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5%;
+}
+
+.hand_1 {
+  margin-top: -50px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-right: 65px;
+}
+
+.hand_2 {
+  display: flex;
+  flex-direction: column;
+  margin-left: -50px;
+  padding-bottom: 65px;
+}
+
+.hand_0 {
+  padding-bottom: 80px;
+  padding-right: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.hand_3 {
+  display: flex;
+  flex-direction: column;
+  margin-right: -50px;
+  padding-top: 65px;
+}
+
+.lastcard {
+  padding-right: 50px;
+  padding-bottom: 80px;
+}
+
+.draw {
+  width: 106px;
+  height: 167px;
+}
+
+.draw:hover {
+  cursor: pointer;
+}
+
+/*Sera mit dans le fichier card.css*/
+.back {
+  width: 120px;
+  height: auto;
+}
+
+.drawcard {
+  width: 106px;
+  height: 167px;
+}
+
+.leftside {
+  margin-bottom: -65px;
+}
+
+.rightside {
+  transform: rotate(-180deg);
+  margin-top: -65px;
+}
+
+.topside {
+  margin-right: -65px;
+  height: 120px;
+  width: auto;
+}
+
+
+.card {
+  margin-right: -50px;
+  margin-bottom: -80px;
+  transition: transform 0.2s ease;
+  z-index: 0;
+}
+
+.cannotPlay {
+  filter: brightness(60%);
+}
+.card:hover:not(.lastcard .card) {
+  cursor: pointer;
+  transform: translateY(-20px);
+  z-index: 1;
+}
+
+.color {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 4px solid black;
+}
+
+.violet {
+  background-color: #c8b3dd;
+}
+
+.rose {
+  background-color: #F2C6DE;
+}
+
+.bleu {
+  background-color: #ACCBE8;
+}
+
+.vert {
+  background-color: #BBE1B1;
+}
+
+.playerName {
+  color: white;
+  font-weight: bold;
+  width: 90%;
+  margin: 0;
+}
+
+.linePlayer {
+  max-width: 500px;
+  height: 2px;
+  background-color: #ffffff;
+}
+
+.cantPlay {
+  color: black
+}
+
+.cantPlayl {
+  background-color: black
+}
