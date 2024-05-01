@@ -16,7 +16,7 @@ import Room from "./pages/room";
 import Page1 from "./pages/one_page";
 
 // Paramétrage pour l'envoi des requêtes
-axios.defaults.baseURL = "https://onegame.vercel.app";
+axios.defaults.baseURL = "https://oneserver.vercel.app";
 axios.defaults.withCredentials = true;
 
 function App() {
