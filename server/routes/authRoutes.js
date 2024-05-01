@@ -16,7 +16,7 @@ const {
 router.use(
   cors({
     credentials: true,
-    origin: "*",
+    origin: "https://onegame.vercel.app",
   })
 );
 
