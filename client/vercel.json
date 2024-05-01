@@ -1,9 +1,16 @@
 {
     "version": 2,
-    "routes": [
-        {
-         "src": "/(.*)",
-         "dest": "/"
+    "builds": [
+      {
+        "src": "src/main.jsx",
+        "use": "@vercel/node"
       }
+    ],
+    "routes": [
+      {
+         "src": "/(.*)",
+         "dest": "/"},
+        { "src": "/login", "dest": "/" },
+        { "src": "/dashboard", "dest": "/" }
    ]
 }
