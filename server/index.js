@@ -11,7 +11,6 @@ const { setupSocket } = require("./chat/tchat");
 const app = express();
 const server = http.createServer(app);
 
-console.log(process.env.MONGO_URL);
 // Connexion à la base de données
 mongoose
   .connect(process.env.MONGO_URL)
