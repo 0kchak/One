@@ -1,14 +1,6 @@
 {
     "version": 2,
     "routes": [
-      {
-         "src": "/login",
-         "dest": "/login.jsx"
-      },
-      {
-         "src": "/dashboard",
-         "dest": "/dashboard.jsx"
-      },
         {
          "src": "/(.*)",
          "dest": "/"
