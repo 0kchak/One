@@ -7,11 +7,11 @@
       },
       {
          "src": "/login",
-         "dest": "/login.jsx"
+         "dest": "/login"
       },
       {
          "src": "/dashboard",
-         "dest": "/dashboard.jsx"
+         "dest": "/dashboard"
       }
    ]
 }
