@@ -126,7 +126,7 @@ const generateresetlink = (email) => {
   const token = jwt.sign({ email: email }, process.env.JWT_SECRET, {
     expiresIn: "10m",
   });
-  return `http://localhost:5173/reset_password/${token}`;
+  return `https://onegame.vercel.app/reset_password/${token}`;
 };
 
 // forgotPassword Endpoint
