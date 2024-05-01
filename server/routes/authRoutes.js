@@ -12,11 +12,11 @@ const {
   getToken,
 } = require("../controle/controleacces");
 
-// Paramétrage du serveur, pour l'instant en local
+// Paramétrage du serveur,
 router.use(
   cors({
     credentials: true,
-    origin: "https://onegame.vercel.app/",
+    origin: "https://onegame.vercel.app",
   })
 );
 
