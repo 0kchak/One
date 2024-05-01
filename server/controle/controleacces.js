@@ -212,7 +212,6 @@ const resetPassword = async (req, res) => {
 
 const getToken = (req, res) => {
   const { token } = req.cookies;
-  console.log(token)
   return res.json({token : token})
 }
 
