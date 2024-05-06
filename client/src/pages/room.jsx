@@ -21,7 +21,7 @@ const Room = () => {
 
   useEffect(() => {
     if (username !== "" && !socket) {
-      const socket = io("http://localhost:8000");
+      const socket = io(process.env.SERV_TCHAT);
       socket.emit("authenticate", user.username);
       setSocket(socket);
       socket.emit("joinRoom", { roomId });

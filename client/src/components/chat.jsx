@@ -30,7 +30,7 @@ const Chat = () => {
    * Définit le nouveau socket et s'authentifie avec Socket.IO.
    */
   const connectToSocketIO = () => {
-    const newSocket = io("http://localhost:8000"); // Remplacez l'URL par celle de votre serveur
+    const newSocket = io(process.env.SERV_TCHAT); // Remplacez l'URL par celle de votre serveur
     setSocket(newSocket);
     authenticateWithSocketIO(newSocket);
   };
