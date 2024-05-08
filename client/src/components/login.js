@@ -10,6 +10,7 @@ class Signin {
     this.navigate = navigate;
     this.setFormData = setFormData;
     this.transitionform = { ...this.form };
+    this.setUser = setUser;
     // Verifie en continue si les paramètres du constructeur sont valides.
     this.validateonSubmit();
   }
@@ -28,6 +29,8 @@ class Signin {
       try {
         const { data } = await axios.post("/login", { username, password });
         if (!data.error) {
+          const user = {email: data.user.email, username: data.user.username}
+          this.setUser(user);
           this.navigate("/dashboard");
         } else {
           this.setFormData({
