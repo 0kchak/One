@@ -2,10 +2,13 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Signin from "../components/login.js";
+import Signin from "../components/login.js";
+import { UserContext } from "../../context/userContext.jsx";
 
 // Fonction Login
 function Login() {
   const navigate = useNavigate();
+  const { setUser } = useContext(UserContext);
   // Objet contenant des strings pour chaque champ.
   const [formData, setFormData] = useState({
     username: "",
@@ -19,7 +22,7 @@ function Login() {
   const handleSubmit = (e) => {
     e.preventDefault(); // Empêche le rechargement de la page
     const fields = ["username", "password"];
-    new Signin(formData, fields, navigate, setFormData);
+    new Signin(formData, fields, navigate, setFormData, setUser);
   };
 
   /** Modifie la valeur d'un champ lors de la saisie.
