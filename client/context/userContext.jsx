@@ -20,7 +20,8 @@ export function UserContextProvider({ children }) {
     console.log(user)
     if (!user) {
       axios.get("/profile").then(({ data }) => {
-        setUser(data);
+        const { email, username } = data;
+        setUser({email : email, username : username});
         // Si pas de token sera toujours renvoyé a la page d'accueil
         if (data && location.pathname !== '/chat' && !location.pathname.startsWith('/room/') && !location.pathname.startsWith('/game/')) {
           navigate("/dashboard");
