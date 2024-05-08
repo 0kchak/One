@@ -64,6 +64,9 @@ function Register() {
   // Rendu
   return (
     <div className="screen">
+      <div className="screendashBlue" />
+      <div className="screendashPink" />
+      <div className="screenWhite" />
       <div className="container">
         <div className="LeftReg side">
           <h2 className="textReg-center">Register</h2>

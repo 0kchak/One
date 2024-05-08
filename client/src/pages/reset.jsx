@@ -29,21 +29,18 @@ function Reset() {
   });
 
   useEffect(() => {
-    axios
-      .post("/verifytoken", { token: token })
-      .then(({ data }) => {
-        if (data.errorexpire) {
-          console.log("token expired");
-          setResetStatus("expired");
-        } else if (data.error) {
-          navigate("/login");
-        } else {
-          setResetStatus("valid");
-          setEmail(data.email);
-        }
-      })
+    axios.post("/verifytoken", { token: token }).then(({ data }) => {
+      if (data.errorexpire) {
+        console.log("token expired");
+        setResetStatus("expired");
+      } else if (data.error) {
+        navigate("/login");
+      } else {
+        setResetStatus("valid");
+        setEmail(data.email);
+      }
+    });
   }, [token]);
-
 
   const validtoken = () => {
     const handleChange = (e) => {
@@ -112,25 +109,30 @@ function Reset() {
         updateErrormsg("confirmPassword", `Passwords do not match`);
       }
     };
-    
+
     const handleReset = () => {
       console.log(newPassword.password);
       if (verifpassword() && samepassword()) {
         console.log("ça fonctionne bien");
         //coté back
-        axios.post("/reset", {email :email, newPassword: newPassword.password}).then (({ data }) => {
-          if (!data) {
-            setSuccessMsg("Password updated successfully. Return to log-in");
-          } else {
-            setErrorMsg(data.error);
-          }
-        })
+        axios
+          .post("/reset", { email: email, newPassword: newPassword.password })
+          .then(({ data }) => {
+            if (!data) {
+              setSuccessMsg("Password updated successfully. Return to log-in");
+            } else {
+              setErrorMsg(data.error);
+            }
+          });
       }
     };
 
     // Rendu
     return (
       <div className="screen">
+        <div className="screendashBlue" />
+        <div className="screendashPink" />
+        <div className="screenWhite" />
         <div className="container">
           <div className="Left side">
             <h2 className="text-center">Reset your password</h2>
@@ -197,13 +199,15 @@ function Reset() {
 
   const style = {
     margin: "14.3rem 0",
-  }
+  };
   if (resetStatus === "expired") {
     return (
       <div className="screen">
         <div className="container">
           <div className="Left side">
-            <h2 className="text-center expired" style={style}>Link Expired</h2>
+            <h2 className="text-center expired" style={style}>
+              Link Expired
+            </h2>
           </div>
           <div className="Right side" />
         </div>

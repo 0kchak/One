@@ -41,6 +41,9 @@ function Login() {
   // Rendu
   return (
     <div className="screen">
+      <div className="screendashBlue" />
+      <div className="screendashPink" />
+      <div className="screenWhite"/>
       <div className="container">
         <div className="Left side">
           <h2 className="text-center">Log in</h2>

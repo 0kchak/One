@@ -1,29 +1,30 @@
+.containerimage {
+  position: absolute;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.boxlogo {
+  position: absolute;
+  height: 600px;
+}
+
+.gamescreen {
+  z-index: 2;
+}
+
 .board {
   height: 100vh;
-  background-image: url("src/assets/board/Fond.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  width: 100vw;
+  z-index: 3;
 }
 
 .hands {
   height: 100vh;
 }
-
-/*
-.handback_ip{
-    display: flex;
-    justify-content : center;
-    transform: rotate(180deg);
-    
-}
-
-.handback_pp{
-    display: flex;
-    justify-content : center;
-    transform: rotate(180deg);
-    
-}*/
 
 .flex-container {
   display: flex;
@@ -152,6 +153,7 @@
   flex-wrap: wrap;
   justify-content: center;
   padding-right: 65px;
+  min-height: 120px;
 }
 
 .hand_2 {
@@ -217,7 +219,6 @@
   width: auto;
 }
 
-
 .card {
   margin-right: -50px;
   margin-bottom: -80px;
@@ -234,11 +235,31 @@
   z-index: 1;
 }
 
+.containerMid {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
 .color {
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  border: 4px solid black;
+  border: 4px solid #2E2E2E;
+  align-self: center;
+}
+
+.one {
+  height: 35px;
+  border-radius: 7px;
+  background-color: #2E2E2E;
+  color: white;
+  border: 0px solid;
+}
+
+.one:hover {
+  cursor: pointer;
+  filter: brightness(150%);
 }
 
 .violet {
@@ -246,15 +267,15 @@
 }
 
 .rose {
-  background-color: #F2C6DE;
+  background-color: #f2c6de;
 }
 
 .bleu {
-  background-color: #ACCBE8;
+  background-color: #accbe8;
 }
 
 .vert {
-  background-color: #BBE1B1;
+  background-color: #bbe1b1;
 }
 
 .playerName {
@@ -271,9 +292,79 @@
 }
 
 .cantPlay {
-  color: black
+  color: #2E2E2E;
 }
 
 .cantPlayl {
-  background-color: black
+  background-color: #2E2E2E;
+}
+
+.background {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+.colorSelector {
+  height: 175px;
+  width: 175px;
+  border-radius: 50%;
+  outline: 7px solid #2E2E2E;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.part {
+  width: 50%;
+  height: 50%;
+}
+
+.colorContainer {
+  height: 255px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #000000d1;
+  border-radius: 50px;
+  gap: 20px;
+}
+
+.askColor {
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  font-family: "Inter";
+}
+
+.endPage {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.endContainer {
+  background-color: #000000d1;
+  border-radius: 15px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.rankingPlayer {
+  font-weight: bold;
+  color: white;
+}
+
+.endTitle {
+  color: white;
 }

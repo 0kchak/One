@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import "./one_page.css";
 import { PlayersHands } from "../components/hands";
+import ColorSelector from "../components/colorSelector";
 import { useNavigate, useParams } from "react-router-dom";
 import { UserContext } from "../../context/userContext";
 
@@ -10,20 +11,20 @@ function Page1() {
   const username = user ? user.username : "";
   const { roomId } = useParams();
 
-  const [currentUser, setCurrentUser] = useState("");
   const [players, setPlayers] = useState([]);
-  const [end, setEnd] = useState(false);
   // stocke toutes les mains
   const [playableCard, setPlayableCard] = useState([]);
   const [currentColor, setCurrentColor] = useState("");
-  const [currentNumber, setCurrentNumber] = useState(0);
-  // on s'enfout
-  const [draw, setDraw] = useState([]);
+  const [items, setItems] = useState([]);
   // tour de quel joueur
   const [turn, setTurn] = useState(0);
   // lastcard
-  const [fosse, setFosse] = useState([]);
-  const [test, setTest] = useState(false);
+  const [Fausse, setFausse] = useState([]);
+  const [one, setOne] = useState(false);
+  const [oneOut, setOneOut] = useState(false);
+  const [end, setEnd] = useState(false);
+  const [winner, setWinner] = useState([]);
+  const [ranking, setRanking] = useState([]);
 
   useEffect(() => {
     if (username !== "" && !socket) {
@@ -43,18 +44,15 @@ function Page1() {
     if (socket) {
       socket.on("SendInfo", (data) => {
         setPlayers(data.players);
-        console.log(data.players);
-        setFosse(data.lastCard);
+        setFausse(data.lastCard);
         setCurrentColor(data.currentColor);
         setTurn(data.currentTurn);
         setPlayableCard(data.playableCards);
-        console.log("data", data.playableCards);
+        console.log(players)
       });
 
       socket.on("updateDraw", (data) => {
-        console.log("data", data);
         setTurn(data.currentTurn);
-        console.log(players);
         setPlayers((prevPlayers) => {
           const updatedPlayers = [...prevPlayers];
           const playerIndex = updatedPlayers.findIndex(
@@ -66,13 +64,11 @@ function Page1() {
           console.log(updatedPlayers);
           return updatedPlayers;
         });
-        console.log(data.playableCards, playableCard);
         setPlayableCard(data.playableCards);
       });
 
       socket.on("hasPlayed", (data) => {
-        console.log(data);
-        setFosse(data.lastCard);
+        setFausse(data.lastCard);
         setCurrentColor(data.currentColor);
         setTurn(data.currentTurn);
         setPlayableCard(data.playableCards);
@@ -84,10 +80,47 @@ function Page1() {
           if (playerIndex !== -1) {
             updatedPlayers[playerIndex].hand = data.hand.newhand;
           }
-          console.log(updatedPlayers);
+          if (data.hand.previousPlayer) {
+            const playerIndexPrevious = updatedPlayers.findIndex(
+              (player) => player.username === data.hand.previousPlayer.name
+            );
+            if (playerIndexPrevious !== -1) {
+              updatedPlayers[playerIndexPrevious].hand =
+                data.hand.previousPlayer.hand;
+            }
+          }
           return updatedPlayers;
         });
-      })
+        setItems([]);
+        setOne(false);
+        setOneOut(false);
+      });
+
+      socket.on("gameResults", (data) => {
+        setWinner(data.winner);
+        setRanking(data.rankings);
+        setEnd(true);
+      });
+      
+      socket.on("OneOutPossible", () => {
+        console.log("one out possible");
+        setOneOut(true);
+      });
+      
+      socket.on("updateOne", (data) => {
+        console.log(data);
+        setPlayers((prevPlayers) => {
+          const updatedPlayers = [...prevPlayers];
+          const playerIndex = updatedPlayers.findIndex(
+            (player) => player.username === data.name
+          );
+          if (playerIndex !== -1) {
+            updatedPlayers[playerIndex].hand = data.hand;
+            setPlayableCard(data.playableCards);
+          }
+          return updatedPlayers;
+        })
+      });
     }
 
     return () => {
@@ -97,47 +130,47 @@ function Page1() {
     };
   }, [socket]);
 
-  useEffect(() => {
-    // // Vérifier si playersHand est vide
-    // if (Object.keys(playersHand).length === 0) {
-    //     // Effectuer les actions nécessaires seulement si playersHand est vide
-    //     setPlayersHand({
-    //         "thanu": ["purple_1", "purple_1","purple_1", "purple_1","purple_1", "purple_1","purple_1", "purple_1","purple_1", "purple_1","purple_1", "purple_1"],
-    //         "inconnu": ["purple_1", "purple_1", "purple_1","purple_1", "purple_1","purple_1", "purple_1","purple_1", "purple_1","purple_1" ,"purple_1", "purple_1","purple_1", "purple_1",,"purple_1", "purple_1","purple_1", "purple_1"],
-    //         "versatile": ["purple_1", "purple_1"],
-    //         "pastèque épicée": ["purple_1", "purple_1"]
-    //     });
-    //     setCurrentUser("thanu");
-    // }
-  }, [test]);
-
   return (
-    // represente le board, on lui applique un effet CSS.
+    <div className="screen">
+      <div className="containerimage">
+        <img className="boxlogo" src={logo}></img>
+      </div>
+      <div className="screendashBlue" id="gamescreen" />
+      <div className="screendashPink" id="gamescreen"/>
     <div className="board">
       {/*On regarde si la partie est fini via un opérateur ternaire, si oui on affiche le classement, 
                 sinon on execute le necessaire pour le fonctionnement de la partie*/}
-      {end ? (
-        <div>
-          {
-            <>
-              <h1>La partie est fini voici le classement</h1>
-            </>
-          }{" "}
-        </div>
-      ) : (
-        <div className="hands">
-          {
-            <PlayersHands
-              players={players}
-              currentUser={username}
-              currentColor={currentColor}
-              lastCard={fosse}
-              turn={turn}
-              playableCard={playableCard}
-            />
-          }
+      {end && (
+        <div className="endPage">
+          <div className="endContainer">
+            <h1 className="endTitle">{winner} has won the game!</h1>
+            <hr></hr>
+            {console.log(ranking)}
+            {ranking.map((player, index) => (
+              <p className="rankingPlayer" key={index}>
+                {index === 0 && "👑"} {player.username} : {player.cardCount}
+              </p>
+            ))}
+          </div>
         </div>
       )}
+      {items}
+      <div className="hands">
+        {
+          <PlayersHands
+            players={players}
+            currentUser={username}
+            currentColor={currentColor}
+            lastCard={Fausse}
+            turn={turn}
+            playableCard={playableCard}
+            setItems={setItems}
+            one = {{one, setOne}}
+            oneOut = {{oneOut, setOneOut}}
+          /> 
+        }
+      </div>
+    </div>
     </div>
   );
 }

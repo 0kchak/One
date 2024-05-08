@@ -39,6 +39,9 @@ function Forget() {
   // Rendu
   return (
     <div className="screen">
+      <div className="screendashBlue" />
+      <div className="screendashPink" />
+      <div className="screenWhite" />
       <div className="container">
         <div className="Left forget side">
           <h2 className="text-center">Enter your email</h2>

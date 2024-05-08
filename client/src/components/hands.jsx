@@ -10,7 +10,23 @@ export function PlayersHands({
   lastCard,
   turn,
   playableCard,
+  setItems,
+  one,
+  oneOut,
 }) {
+  const { socket } = useContext(UserContext);
+  const { roomId } = useParams();
+
+  const handleOneClick = () => {
+    one.setOne(true);
+    console.log("ami");
+  };
+
+  const handleOneOutClick = () => {
+    oneOut.setOneOut(false);
+    socket.emit("OneOut", parseInt(roomId));
+    console.log("ennemi");
+  };
   /**
    * Une fonction qui génére des divs permettant la séparation de l'écran en 3 parties (en colonne), dont la partie du milieu sera divisé en 3 autres divs(en ligne).
    * Et pour chaque div, on affiche les mains des joueurs, la pioche la derniere carte joué et la carte actuelle.
@@ -19,10 +35,11 @@ export function PlayersHands({
    */
   const Section = () => {
     const mains = Hands();
-    console.log(mains);
-    console.log(mains.otherPlayers[0]);
+    console.log("ptn",oneOut)
+    //console.log(mains);
     const { length } = mains.otherPlayers;
-    console.log(length);
+    const playUser = players.find((player) => player.username === currentUser);
+    const userHand = playUser ? playUser.hand : [];
     return (
       <div className="flex-container">
         <div className="container_otherplayer">
@@ -35,11 +52,36 @@ export function PlayersHands({
             </div>
             <div className="divbottomtest divs">
               <div className="draw" onClick={handleDrawClick}>
-                {<BackCard className="drawcard" key={0}/>}
+                {<BackCard className="drawcard" key={0} />}
               </div>
-              <div className={`color ${currentColor}`} />
+              <div className="containerMid">
+                <button
+                  className="one Out"
+                  onClick={handleOneOutClick}
+                  disabled={!oneOut.oneOut}
+                >
+                  ONE OUT
+                </button>
+                <div className={`color ${currentColor}`} />
+                <button
+                  className="one"
+                  onClick={handleOneClick}
+                  disabled={!(userHand.length === 2)}
+                >
+                  ONE
+                </button>
+              </div>
               <div className="lastcard">
-                {<Card key={99} valeur={lastCard} val={99} />}
+                {
+                  <Card
+                    key={99}
+                    valeur={lastCard}
+                    val={99}
+                    setItems={setItems}
+                    players={players}
+                    one={one.one}
+                  />
+                }
               </div>
             </div>
           </div>
@@ -59,7 +101,7 @@ export function PlayersHands({
    * @return {array} Liste de composant React de la main de chaque joueur.
    */
   const Hands = () => {
-    console.log(players);
+    //console.log(players);
     const listhands = [];
     const hands = {
       userHand: [],
@@ -68,7 +110,7 @@ export function PlayersHands({
     let i = 1;
     players.map(
       (player) => (
-        console.log(player.hand),
+        //console.log(player.hand),
         //console.log(player.username, currentUser    ),
         player.username === currentUser
           ? (hands.userHand = (
@@ -92,7 +134,14 @@ export function PlayersHands({
                   }`}
                 >
                   {player.hand.map((carte, j) => (
-                    <Card key={j} valeur={carte} playableCard={playableCard} />
+                    <Card
+                      key={j}
+                      valeur={carte}
+                      playableCard={playableCard}
+                      setItems={setItems}
+                      players={players}
+                      one={one.one}
+                    />
                   ))}
                 </div>
               </React.Fragment>
@@ -123,12 +172,9 @@ export function PlayersHands({
     );
     return hands;
   };
-
-  const { socket } = useContext(UserContext);
-  const { roomId } = useParams();
   const handleDrawClick = () => {
     if (currentUser === turn) {
-        socket.emit('drawCards', { roomId: roomId});    
+      socket.emit("drawCards", { roomId: roomId });
     }
   };
 

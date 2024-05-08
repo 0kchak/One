@@ -1,0 +1,94 @@
+.tchat {
+  top: 0;
+  background-color: #feefff;
+  width: 300px;
+  height: 100%;
+  border-radius: 30px 0 0 30px;
+  padding: 25px;
+  box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.message {
+}
+
+#userMsg {
+  text-align: end;
+}
+
+#otherMsg {
+  text-align: start;
+}
+
+.playerMessage {
+  border: 1px solid #be8ab2;
+  background-color: #f7c7ec;
+  padding: 12px 20px;
+  font-weight: bold;
+  font-size: 14px;
+  display: inline-flex;
+  margin-bottom: 10px;
+  border-radius: 14px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+#playerTchat {
+  padding: 0;
+  color: #c4267b;
+  font-weight: bold;
+  font-family: "Inter";
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+#otherPlayerMsg {
+  background-color: #f398de;
+}
+
+.allMsg {
+  margin-bottom: 10px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #be8ab2 #00000000;
+}
+  
+
+
+.inputContainerTchat {
+    display: flex;
+    border: 2px solid #EB9DC7;
+    border-radius: 10px;
+    background-color: #F7C7EC;
+}
+
+.inputTchat {
+  /* box-sizing: padding-box; */
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  display: block;
+  border-radius: 10px 0 0 10px;
+  resize: none;
+  background-color: #F7C7EC;
+  border: none;
+  overflow: hidden;
+}
+
+.inputTchat:focus {
+  outline: none;
+}
+
+.buttonTchat {
+    border-radius: 10px;
+    background-color: #F7C7EC;
+    border: none;
+}
+
+.playerNameInList {
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 10px;
+}

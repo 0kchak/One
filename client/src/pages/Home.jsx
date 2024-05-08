@@ -7,6 +7,9 @@ import "../styles/home.css";
 export default function Home() {
   return (
     <div className="screen">
+      <div className="screendashBlue" />
+      <div className="screendashPink" />
+      <div className="screenWhite" />
       <div className="container">
         <div className="Lefthome side">
           <h2 className="texthome-center">Welcome to ONE</h2>

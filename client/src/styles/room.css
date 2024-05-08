@@ -1,0 +1,86 @@
+#whiteRoom {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.pageContent {
+  z-index: 1;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: flex-end;
+}
+
+#rightRoom {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#leftRoom {
+  flex: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.containerRoom {
+  width: 100%;
+}
+
+.blockRoom {
+  display: flex;
+  gap: 30%;
+  flex-direction: column;
+  border-radius: 2.3rem;
+  padding-bottom: 2rem;
+  width: 315px;
+  height: 405px;
+  background-color: white;
+  box-shadow: 0px 0px 15px 0px;
+  justify-content: center;
+  align-items: center;
+}
+
+#blockPlayer {
+  background-color: #C4267B;
+  height: 250px;
+  justify-content: flex-start;
+  align-items: center;
+  gap:0%
+}
+
+#start {
+  background-color: #f2c6de;
+  font-family: "Inter";
+  font-weight: bold;
+  font-size: 1rem;
+  text-align: center;
+  color: #ffffff;
+  border: 2px solid #e5aecc;
+  border-radius: 0.45rem;
+  padding: 1rem 4rem;
+  cursor: pointer;
+  width: auto;
+
+}
+
+.textCenterRoom {
+  color: #c4267b;
+}
+
+#wait {
+  margin: 30px;
+  color: #ffffff;
+}
+
+@media screen and (min-width: 1000px) {
+  .blockRoom {
+    max-width: 80%;
+    width: 500px;
+  }
+
+  #blockRoom1 {
+    width: 605px;
+  }
+}
