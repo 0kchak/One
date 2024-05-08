@@ -4,6 +4,7 @@ import { PlayersHands } from "../components/hands";
 import ColorSelector from "../components/colorSelector";
 import { useNavigate, useParams } from "react-router-dom";
 import { UserContext } from "../../context/userContext";
+import logo from "../assets/logo.png";
 
 function Page1() {
   //const navigate = useNavigate();
