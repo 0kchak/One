@@ -22,7 +22,6 @@ axios.defaults.withCredentials = true;
 function App() {
   return (
     <UserContextProvider>
-      <BarreNavigation />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<Register />} />
