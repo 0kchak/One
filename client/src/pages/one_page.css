@@ -10,6 +10,7 @@
 .boxlogo {
   position: absolute;
   height: 600px;
+  mix-blend-mode: hard-light;
 }
 
 .gamescreen {
