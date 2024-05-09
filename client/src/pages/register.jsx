@@ -119,7 +119,7 @@ function Register() {
                 <div className="eye-container">
                   <img
                     className="eye"
-                    src="src/assets/icones/oeil.png"
+                    src="/assets/icones/oeil.png"
                     onClick={togglePasswordVisibility}
                   />
                 </div>
