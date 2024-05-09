@@ -4,7 +4,7 @@ import axios from "axios";
 // Classe du login
 class Signin {
   // Constructeur
-  constructor(form, fields, navigate, setFormData) {
+  constructor(form, fields, navigate, setFormData, setUser) {
     this.form = form;
     this.fields = fields;
     this.navigate = navigate;
