@@ -3,6 +3,7 @@ import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Signin from "../components/login.js";
 import { UserContext } from "../../context/userContext.jsx";
+import oeil from "../assets/oeil.png";
 
 // Fonction Login
 function Login() {
@@ -79,7 +80,7 @@ function Login() {
                 <div className="eye-container">
                   <img
                     className="eye"
-                    src="../assets/icones/oeil.png"
+                    src={oeil}
                     onClick={togglePasswordVisibility}
                   />
                 </div>
