@@ -5,7 +5,7 @@
 .pageContent {
   z-index: 1;
   height: 100vh;
-  width: 100vw;
+  width: calc(100vw - 300px);
   display: flex;
   justify-content: flex-end;
 }
@@ -30,7 +30,7 @@
 
 .blockRoom {
   display: flex;
-  gap: 30%;
+  gap: 15%;
   flex-direction: column;
   border-radius: 2.3rem;
   padding-bottom: 2rem;
@@ -72,6 +72,11 @@
 #wait {
   margin: 30px;
   color: #ffffff;
+}
+
+#RoomPage {
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
 @media screen and (min-width: 1000px) {

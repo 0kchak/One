@@ -9,8 +9,9 @@
 
 .boxlogo {
   position: absolute;
-  height: 600px;
+  height: 400px;
   mix-blend-mode: hard-light;
+  margin-bottom: 200px;
 }
 
 .gamescreen {
@@ -236,6 +237,10 @@
   z-index: 1;
 }
 
+.selected {
+  box-shadow: 0px 0px 5px 4px white, 0 0 0 5px white inset;
+}
+
 .containerMid {
   display: flex;
   flex-direction: column;
@@ -246,14 +251,14 @@
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  border: 4px solid #2E2E2E;
+  border: 4px solid #2e2e2e;
   align-self: center;
 }
 
 .one {
   height: 35px;
   border-radius: 7px;
-  background-color: #2E2E2E;
+  background-color: #2e2e2e;
   color: white;
   border: 0px solid;
 }
@@ -282,8 +287,11 @@
 .playerName {
   color: white;
   font-weight: bold;
-  width: 90%;
   margin: 0;
+}
+
+#playerTchat {
+  width: 90%;
 }
 
 .linePlayer {
@@ -292,12 +300,30 @@
   background-color: #ffffff;
 }
 
+.l2p,
+.l3p {
+  width: 3px;
+  height: 300px;
+  margin-left: 8px;
+  margin-right: 8px;
+}
+
+.n2p,
+.n3p {
+  writing-mode: vertical-rl;
+  padding: 0;
+}
+
+.n3p {
+  transform: rotate(180deg);
+}
+
 .cantPlay {
-  color: #2E2E2E;
+  color: #2e2e2e;
 }
 
 .cantPlayl {
-  background-color: #2E2E2E;
+  background-color: #2e2e2e;
 }
 
 .background {
@@ -314,7 +340,7 @@
   height: 175px;
   width: 175px;
   border-radius: 50%;
-  outline: 7px solid #2E2E2E;
+  outline: 7px solid #2e2e2e;
   position: relative;
   display: flex;
   flex-direction: row;
@@ -351,6 +377,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 2;
+  position: absolute;
 }
 
 .endContainer {
@@ -368,4 +396,48 @@
 
 .endTitle {
   color: white;
+}
+
+#endButton {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.playButton,
+.cancelButton {
+  height: 35px;
+  border-radius: 7px;
+  background-color: #2e2e2e;
+  color: white;
+  border: 0px solid;
+  width: 100px;
+}
+
+.cancelButton:hover,
+.playButton:hover {
+  cursor: pointer;
+  filter: brightness(150%);
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  gap: 15%;
+}
+
+#manyCard {
+  position: absolute;
+  width: 750px;
+  top: 25%;
+  right: 30%;
+  color: white;
+  font-family: "Inter";
+  font-weight: bold;
+  z-index: 10;
+}
+
+@media screen and (max-width: 600px) {
+  .boxlogo {
+    height: 250px;
+  }
 }

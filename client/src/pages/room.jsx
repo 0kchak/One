@@ -4,35 +4,45 @@ import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../context/userContext";
 import { io } from "socket.io-client";
 import "../styles/room.css";
+import { ButtonContext } from "../../context/buttonContext";
 
 const Room = () => {
   const navigate = useNavigate();
 
   const { socket, user, setSocket } = useContext(UserContext);
+  const { setInGame, setDontShow, setInRoom, setRoomId } =
+    useContext(ButtonContext);
   const username = user ? user.username : "";
-  console.log("username: ", username);
-  console.log("socket: ", socket);
   const { roomId } = useParams();
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const owner = searchParams.get("owner") === "true";
-  console.log(owner);
 
   const [showCountdown, setshowCountdown] = useState(false);
   const [players, setPlayers] = useState([]);
 
   useEffect(() => {
+    setInGame(true);
+    setInRoom(true);
+    setDontShow(false);
+    setPlayers({
+      owner: { username: user.username, id: socket.id },
+      players: [{ username: user.username, id: socket.id }],
+    });
+  }, []);
+
+  useEffect(() => {
+    setRoomId(roomId);
     if (username !== "" && !socket) {
-      const socket = io("https://oneserv-e5f2e755d43a.herokuapp.com/");
+      const socket = io("https://onegameserv-7349ada989e5.herokuapp.com");
       socket.emit("authenticate", user.username);
       setSocket(socket);
       socket.emit("joinRoom", { roomId });
       socket.on("roomJoined");
       socket.on("error", (data) => {
         alert(data);
-        navigate("/chat");
+        navigate("/dashboard");
       });
-      console.log(socket);
     }
   }, [username]);
 
@@ -50,13 +60,14 @@ const Room = () => {
         setshowCountdown(true);
         setTimeout(() => {
           setshowCountdown(false);
+          setInRoom(false);
           //navigate('/game') le lien de la page de la room
-          console.log("game started");
           navigate(`/game/${roomId}`);
         }, 5000);
       };
 
       const handleDisconnected = (data) => {
+        setPlayers(data);
         console.log(`Player ${data} disconnected`);
       };
 
@@ -87,24 +98,30 @@ const Room = () => {
       <div className="pageContent">
         <div className="right" id="rightRoom">
           <div className="blockRoom" id="blockPlayer">
-            <h2 className="textCenterRoom" id="wait">Who are we waiting for?</h2>
+            <h2 className="textCenterRoom" id="wait">
+              Who are we waiting for?
+            </h2>
             <div className="containerPlayerlist">
-              {(players && players.players) && players.players.map((player, index) => (
-                <p className={`playerNameInList`} key={index}>{`#${player.username} ${player.username === players.owner.username ? "👑":""}`}</p>
-              ))
-                
-                /*players && players.players ? players.players.map((player, index) => (
-                <p className={`playerNameInList`} key={index}>
-                  {player}
-                </p>
-              )): null*/}
+              {
+                players &&
+                  players.players &&
+                  players.players.map((player, index) => (
+                    <p className={`playerNameInList`} key={index}>{`#${
+                      player.username
+                    } ${
+                      player.username === players.owner.username ? "👑" : ""
+                    }`}</p>
+                  ))
+              }
+              {console.log(players)}
             </div>
           </div>
         </div>
         <div className="left" id="leftRoom">
-          <div className="blockRoom" id ="blockRoom1">
+          <div className="blockRoom" id="blockRoom1">
             <h1 className="textCenterRoom">{`Room n°${roomId}`}</h1>
             <div className="containerRoom">
+              {owner === false && <h2>Waiting for the start.</h2>}
               {showCountdown && <h1>Game Started</h1>}
               {owner == true && (
                 <button className="button" id="start" onClick={startGame}>
@@ -114,7 +131,6 @@ const Room = () => {
             </div>
           </div>
         </div>
-        {<Tchat roomId={roomId} />}
       </div>
     </div>
   );

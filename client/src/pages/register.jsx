@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../styles/register.css";
 import Signup from "../components/signup.js";
+import oeil from "../assets/icones/oeil.png";
+
 
 // Fonction d'inscription
 function Register() {
@@ -119,7 +121,7 @@ function Register() {
                 <div className="eye-container">
                   <img
                     className="eye"
-                    src="/assets/icones/oeil.png"
+                    src={oeil}
                     onClick={togglePasswordVisibility}
                   />
                 </div>

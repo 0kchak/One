@@ -1,14 +1,13 @@
 import React, { useContext } from "react";
 import { memo } from "react";
 import { UserContext } from "../../context/userContext";
-const ColorSelector = ({ card, one}) => {
+import { GameContext } from "../../context/gameContext";
+const ColorSelector = ({one, roomId}) => {
   const { socket } = useContext(UserContext);
+  const { cardsToPlay } = useContext(GameContext);
   const handleClick = (color) => {
-    console.log(color);
-    console.log(card);
-    socket.emit("playCard", { cardPlayed: card, color: color });
+    socket.emit("playCard", { cardPlayed: cardsToPlay, color: color });
     if (one) {
-      console.log("t'as pas clické");
       socket.emit("One", roomId);
     }
   };

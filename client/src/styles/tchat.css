@@ -1,5 +1,7 @@
 .tchat {
-  top: 0;
+  position: fixed;
+  z-index: 5;
+  right: 0;
   background-color: #feefff;
   width: 300px;
   height: 100%;
@@ -9,9 +11,6 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-}
-
-.message {
 }
 
 #userMsg {
@@ -53,25 +52,23 @@
   scrollbar-width: thin;
   scrollbar-color: #be8ab2 #00000000;
 }
-  
-
 
 .inputContainerTchat {
-    display: flex;
-    border: 2px solid #EB9DC7;
-    border-radius: 10px;
-    background-color: #F7C7EC;
+  display: flex;
+  border: 2px solid #eb9dc7;
+  border-radius: 10px;
+  background-color: #f7c7ec;
 }
 
 .inputTchat {
-  /* box-sizing: padding-box; */
   width: 100%;
   padding: 10px;
   font-size: 14px;
+  font-family: "Inter";
   display: block;
   border-radius: 10px 0 0 10px;
   resize: none;
-  background-color: #F7C7EC;
+  background-color: #f7c7ec;
   border: none;
   overflow: hidden;
 }
@@ -81,14 +78,22 @@
 }
 
 .buttonTchat {
-    border-radius: 10px;
-    background-color: #F7C7EC;
-    border: none;
+  border-radius: 10px;
+  background-color: #f7c7ec;
+  border: none;
+  height: 25px;
+  width: auto;
+  padding-right: 5px;
 }
 
 .playerNameInList {
-    color: #ffffff;
-    font-weight: bold;
-    font-size: 18px;
-    margin-bottom: 10px;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.containerSend {
+  display: flex;
+  align-items: center;
 }

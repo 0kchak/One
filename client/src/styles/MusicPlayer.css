@@ -1,0 +1,204 @@
+/* MusicPlayer.css */
+.audioPlayer {
+  border-radius: 16px;
+  box-shadow: 0 3px 6px rgba(87, 4, 50, 0.1);
+  display: flex;
+  flex-direction: column;
+  color: #ffffff;
+  position: fixed;
+  right: 20px;
+  top: 85px;
+  width: 300px;
+  box-sizing: border-box;
+  z-index: 100;
+  padding: 10px 0px;
+  opacity: 0.8;
+  background-color: rgb(30 30 30);
+  align-items: center;
+  justify-content: center;
+}
+
+.toggle-music-player-button {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  font-size: 2rem;
+  z-index: 101;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.toggle-music-player-button:hover {
+  opacity: 0.7;
+}
+
+.controlsWrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: 25px;
+  flex-wrap: wrap;
+  margin-top: 5px;
+}
+
+.controlButton {
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: rgb(255, 255, 255);
+  margin-left: auto;
+}
+
+.controlButton:hover {
+  color: rgb(253, 224, 229);
+}
+
+.trackInfo {
+  font-size: 0.9rem;
+  text-align: center;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: white;
+}
+
+.progressContainer {
+  width: 90%;
+  background-color: #e1e1e1;
+  border-radius: 10px;
+  position: relative;
+  height: 6px;
+  margin-bottom: 10px;
+}
+
+.progressBar {
+  height: 100%;
+  border-radius: 5px;
+  width: 0%;
+  position: relative;
+}
+
+.progressBar::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translate(50%, -50%);
+  width: 8px;
+  height: 8px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  box-shadow: 0px 0px 4px 2px black;
+}
+
+.progressTime {
+  display: flex;
+  justify-content: space-between;
+  width: 95%;
+  font-size: 0.75rem;
+  margin-top: 1px;
+}
+
+.volumeControls {
+  display: flex;
+  gap: 5px;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.volumeIcon {
+  font-size: 1.5rem;
+}
+
+.volumeSlider {
+  -webkit-appearance: none;
+  appearance: none;
+  background: #e1e1e1;
+  outline: none;
+  height: 5px;
+  width: 180px;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.volumeSlider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #e1e1e1;
+  cursor: pointer;
+  box-shadow: 0px 0px 4px 2px black;
+}
+
+.volumeSlider::-moz-range-thumb {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #61dafb;
+  cursor: pointer;
+}
+
+/* Responsive  */
+@media (max-width: 768px) {
+  .audioPlayer {
+    padding: 0.45rem;
+  }
+  .progressContainer {
+    width: 100%; /* Ajustement pour petits écrans pour ne pas déborder */
+  }
+  .progressTime {
+    width: 100%;
+  }
+  .controlsWrapper {
+    padding-left: 0.2%;
+  }
+
+  .controlButton {
+    font-size: 1.2rem;
+  }
+
+  .speaker-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+  .toggle-music-player-button {
+    font-size: 1.5rem;
+    top: 10px;
+    right: 10px;
+  }
+}
+
+.hoverTimeLabel {
+  font-size: 0.7rem;
+  color: #fff;
+  position: absolute;
+  top: -20px;
+  background-color: rgba(77, 72, 75, 0.7);
+  padding: 2px 5px;
+  border-radius: 3px;
+  white-space: nowrap;
+  display: none;
+}
+
+.progressContainer:hover .hoverTimeLabel {
+  display: block;
+}
+
+.nomDuJeu {
+  font-family: 'Inter';
+  font-weight: bold;
+  align-self: center;
+}
+
+.audioMusic {
+  filter: invert(1);
+  width: 25px;
+}

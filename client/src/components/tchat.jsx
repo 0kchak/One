@@ -1,22 +1,22 @@
 import React, { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../context/userContext";
 import "../styles/tchat.css";
+import send from "../assets/icones/send.png";
 
-const Tchat = ({ roomId }) => {
+const Tchat = ({ roomId , hidden }) => {
   const { socket, user } = useContext(UserContext);
   const username = user ? user.username : "";
   const [newMsg, setNewMsg] = useState("");
   const [messages, setMessages] = useState([]);
 
   /*
-   *Un hook pour mettre à jours les messages stockées.
+   *Un useEffect pour mettre à jours les messages stockées.
    */
   useEffect(() => {
     if (socket) {
       // Écoute l'événement "message"
       const handleMessage = (data) => {
         setMessages((prevMessages) => [...prevMessages, data]);
-        console.log(data);
       };
       socket.on("message", handleMessage);
 
@@ -76,7 +76,7 @@ const Tchat = ({ roomId }) => {
   };
 
   return (
-    <div className="tchat">
+    <div className="tchat"  style={{ visibility: hidden ? 'visible' : 'hidden' }}>
       <div className="allMsg">{renderMessages()}</div>
       <div className="inputContainerTchat">
         <textarea
@@ -85,9 +85,9 @@ const Tchat = ({ roomId }) => {
           value={newMsg}
           onChange={(e) => setNewMsg(e.target.value)}
         />
-        <button className="buttonTchat" onClick={sendMessage}>
-          {">"}
-        </button>
+        <div className="containerSend">
+        <img src={send} className="buttonTchat" onClick={sendMessage} />
+        </div>
       </div>
     </div>
   );

@@ -80,6 +80,7 @@ export function PlayersHands({
                     setItems={setItems}
                     players={players}
                     one={one.one}
+                    index={99}
                   />
                 }
               </div>
@@ -116,14 +117,14 @@ export function PlayersHands({
           ? (hands.userHand = (
               <React.Fragment>
                 <p
-                  className={`playerName ${0}p ${
+                  className={`playerName n${0}p ${
                     turn !== currentUser ? "cantPlay" : ""
                   }`}
                 >
                   {currentUser}
                 </p>
                 <hr
-                  className={`linePlayer ${0}p ${
+                  className={`linePlayer l${0}p ${
                     turn !== currentUser ? "cantPlayl" : ""
                   }`}
                 />
@@ -141,12 +142,13 @@ export function PlayersHands({
                       setItems={setItems}
                       players={players}
                       one={one.one}
+                      index={j}
                     />
                   ))}
                 </div>
               </React.Fragment>
             ))
-          : (listhands.push(
+          : (listhands.push( (i !== 3) ? 
               <React.Fragment>
                 <div key={i} className={`hand_${i}`}>
                   {player.hand.map((_, j) => (
@@ -154,18 +156,37 @@ export function PlayersHands({
                   ))}
                 </div>
                 <hr
-                  className={`linePlayer ${i}p ${
+                  className={`linePlayer l${i}p ${
                     turn !== player.username ? "cantPlayl" : ""
                   }`}
                 />
                 <p
-                  className={`playerName ${i}p ${
+                  className={`playerName n${i}p ${
                     turn !== player.username ? "cantPlay" : ""
                   }`}
                 >
                   {player.username}
                 </p>
-              </React.Fragment>
+              </React.Fragment> : 
+                <React.Fragment>
+                  <p
+                    className={`playerName n${i}p ${
+                      turn !== player.username ? "cantPlay" : ""
+                    }`}
+                  >
+                    {player.username}
+                  </p>
+                  <hr
+                    className={`linePlayer l${i}p ${
+                      turn !== player.username ? "cantPlayl" : ""
+                    }`}
+                  />
+                  <div key={i} className={`hand_${i}`}>
+                    {player.hand.map((_, j) => (
+                      <BackCard key={j} joueur={i} />
+                    ))}
+                  </div>
+                </React.Fragment>
             ),
             (i += 1))
       )

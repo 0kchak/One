@@ -13,3 +13,7 @@ p {
   margin: 0 auto;
   padding: 0 1.25rem;
 }
+
+#containerForgetError {
+  margin: 1.6px;
+}

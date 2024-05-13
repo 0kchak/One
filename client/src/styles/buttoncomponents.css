@@ -1,0 +1,136 @@
+.boxSettings {
+  position: fixed;
+  z-index: 6;
+  height: 50px;
+  width: 50px;
+  background-color: #2e2e2e;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  left: calc(100% - 70px);
+  top: 20px;
+  justify-content: center;
+  align-items: center;
+  /* box-shadow: -2px 2px 2px 0px rgba(0, 0, 0, 0.5); */
+}
+
+.boxSettings:hover {
+  cursor: pointer;
+  filter: brightness(130%);
+}
+
+.lineSettings {
+  height: 3px;
+  width: 70%;
+  margin: 4px;
+  border-radius: 20px;
+}
+
+.containerSettings {
+  position: absolute;
+  z-index: 5;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.box {
+  max-width: 90vw;
+  min-width: 315px;
+  background-color: #000000d1;
+  width: 700px;
+  height: 500px;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.close {
+  background-color: #fe5858;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  align-self: flex-end;
+  margin: 15px;
+  position: absolute;
+}
+
+.menuList {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 7%;
+}
+
+.itemMenu {
+  display: flex;
+  background: #191919;
+  border-radius: 10px;
+  width: 90%;
+  height: 70px;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-family: "Inter";
+  font-weight: bold;
+  font-size: larger;
+}
+
+li {
+  text-align: start;
+}
+
+.textContainer {
+  display: flex;
+  gap: 5%;
+  flex-direction: column;
+  overflow: auto;
+  color: white;
+  font-family: "Inter";
+  height: 90%;
+  scrollbar-color: black #2e2e2e;
+  scrollbar-width: thin;
+}
+
+ul {
+  margin: 0;
+}
+
+.scrollArrow {
+  font-size: 30px;
+  align-self: flex-end;
+  margin: 15px 0 15px 15px;
+}
+
+.containerArrow {
+  color: #a5a5a5;
+  align-self: flex-end;
+  position: absolute;
+  display: flex;
+  top: 10%;
+  height: 90%;
+  right: 30px;
+}
+
+#tchat {
+  left: calc(100% - 210px);
+}
+
+.bubble {
+  width: 85%;
+  filter: invert(1);
+}
+
+.music {
+  filter: invert(1);
+  padding-right: 4px;
+}
+
+#music {
+  left: calc(100% - 140px);
+}

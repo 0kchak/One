@@ -59,7 +59,7 @@ function Forget() {
               placeholder="Enter your email"
             />
           </div>
-          <div className="errorcontainer">
+          <div className="errorcontainer" id="containerForgetError">
             <span className="error-message">{errorMsg}</span>
             <span className="success-message">{successMsg}</span>
           </div>
