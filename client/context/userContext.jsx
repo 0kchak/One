@@ -20,7 +20,7 @@ export function UserContextProvider({ children }) {
     if (!user) {
       axios.get("/profile").then(({ data }) => {
         // Si pas de token sera toujours renvoyé a la page d'accueil
-        if (data && !location.pathname.startsWith('/room/') && !location.pathname.startsWith('/game/')) {
+        if (data && !location.pathname.startsWith('/room/') && !location.pathname.startsWith('/game/') && !location.pathname.startsWith('/reset_password/')) {
           const { email, username } = data;
           setUser({email : email, username : username});
           console.log("User: ", data);
