@@ -1,7 +1,6 @@
 // Imports
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import BarreNavigation from "./components/BarreNavigation";
 import Home from "./pages/Home";
 import Register from "./pages/register";
 import Login from "./pages/login";
