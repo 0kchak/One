@@ -13,6 +13,7 @@ const Room = () => {
   const { setInGame, setDontShow, setInRoom, setRoomId } =
     useContext(ButtonContext);
   const username = user ? user.username : "";
+  console.log("username: ", user);
   const { roomId } = useParams();
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
@@ -26,8 +27,8 @@ const Room = () => {
     setInRoom(true);
     setDontShow(false);
     setPlayers({
-      owner: { username: user.username, id: socket.id },
-      players: [{ username: user.username, id: socket.id }],
+      owner: { username: username, id: socket ? socket.id : "" },
+      players: [{ username: username, id: socket ? socket.id : "" }],
     });
   }, []);
 
@@ -35,6 +36,7 @@ const Room = () => {
     setRoomId(roomId);
     if (username !== "" && !socket) {
       const socket = io("https://onegameserv-7349ada989e5.herokuapp.com");
+      console.log("urss")
       socket.emit("authenticate", user.username);
       setSocket(socket);
       socket.emit("joinRoom", { roomId });
@@ -129,6 +131,9 @@ const Room = () => {
                 </button>
               )}
             </div>
+            <button className="button" onClick={() => {navigator.clipboard.writeText(`https://onegame.vercel.app/room/${roomId}`), alert("Link has been copied.")}}>
+              Share Link
+            </button>
           </div>
         </div>
       </div>

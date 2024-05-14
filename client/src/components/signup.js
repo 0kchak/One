@@ -30,7 +30,7 @@ class Signup {
       const password = this.form.password.value;
       try {
         // Envoie la requête pour enregistrer un nouveau compte
-        const { data } = await axios.post("/register", {
+        const { data } = await axios.post("/login", {
           username,
           email,
           password,
@@ -54,7 +54,8 @@ class Signup {
           }
           this.setFormData(errorform);
         } else {
-          this.navigate("/dashboard");
+          alert("Your account has been created, you can now log in.");
+          this.navigate("/login");
         }
       } catch (error) {
         console.log(error);

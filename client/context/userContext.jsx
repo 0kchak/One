@@ -23,9 +23,14 @@ export function UserContextProvider({ children }) {
         if (data && !location.pathname.startsWith('/room/') && !location.pathname.startsWith('/game/')) {
           const { email, username } = data;
           setUser({email : email, username : username});
+          console.log("User: ", data);
           navigate("/dashboard");
         } else if (!data){
           navigate("/");
+        } else {
+          const { email, username } = data;
+          setUser({email : email, username : username});
+          console.log("User: ", data);
         }
       });
     }

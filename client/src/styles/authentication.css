@@ -65,6 +65,7 @@ h6 {
 }
 
 .screen {
+  position: relative;
   margin: 0;
   display: flex;
   justify-content: center;

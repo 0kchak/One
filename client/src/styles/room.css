@@ -4,7 +4,7 @@
 
 .pageContent {
   z-index: 1;
-  height: 100vh;
+  min-height: 100vh;
   width: calc(100vw - 300px);
   display: flex;
   justify-content: flex-end;
@@ -43,11 +43,11 @@
 }
 
 #blockPlayer {
-  background-color: #C4267B;
+  background-color: #c4267b;
   height: 250px;
   justify-content: flex-start;
   align-items: center;
-  gap:0%
+  gap: 0%;
 }
 
 #start {
@@ -62,7 +62,6 @@
   padding: 1rem 4rem;
   cursor: pointer;
   width: auto;
-
 }
 
 .textCenterRoom {
@@ -82,10 +81,48 @@
 @media screen and (min-width: 1000px) {
   .blockRoom {
     max-width: 80%;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .blockRoom {
     width: 500px;
   }
 
   #blockRoom1 {
-    width: 605px;
+    width: 500px;
+  }
+}
+
+
+@media screen and (max-width: 1000px) {
+  .pageContent {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  #RoomPage {
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    flex-wrap: wrap;
+    min-width: 100vw;
+  }
+
+  .pageContent {
+    width: 100vw;
+    margin-top: 150px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  #rightRoom {
+    margin-bottom: 20%;
+  }
+
+  .tchat {
+    display: none;
   }
 }

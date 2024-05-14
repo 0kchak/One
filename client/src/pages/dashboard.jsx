@@ -66,7 +66,7 @@ function Dashboard() {
       socket.emit("joinRoom", { roomId: valRoom });
       socket.on("roomJoined", () => {
         setErrorJoin("");
-        navigate(`/room/${valRoom}?owner=${false}`);
+        navigate(`/room/${valRoom}`);
       });
       socket.on("error", (data) => {
         console.log("roomID: ", data);

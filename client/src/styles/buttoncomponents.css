@@ -28,7 +28,7 @@
 
 .containerSettings {
   position: absolute;
-  z-index: 5;
+  z-index: 10;
   height: 100%;
   width: 100%;
   display: flex;
@@ -133,4 +133,8 @@ ul {
 
 #music {
   left: calc(100% - 140px);
+}
+
+.underline {
+  text-decoration: underline;
 }
