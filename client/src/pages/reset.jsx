@@ -31,7 +31,6 @@ function Reset() {
   useEffect(() => {
     axios.post("/verifytoken", { token: token }).then(({ data }) => {
       if (data.errorexpire) {
-        console.log("token expired");
         setResetStatus("expired");
       } else if (data.error) {
         navigate("/login");
@@ -101,7 +100,6 @@ function Reset() {
     };
 
     const samepassword = () => {
-      console;
       if (newPassword.password === newPassword.confirmPassword) {
         updateErrormsg("confirmPassword", "");
         return true;
@@ -111,9 +109,7 @@ function Reset() {
     };
 
     const handleReset = () => {
-      console.log(newPassword.password);
       if (verifpassword() && samepassword()) {
-        console.log("ça fonctionne bien");
         //coté back
         axios
           .post("/reset", { email: email, newPassword: newPassword.password })

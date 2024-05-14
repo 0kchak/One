@@ -19,13 +19,11 @@ export function PlayersHands({
 
   const handleOneClick = () => {
     one.setOne(true);
-    console.log("ami");
   };
 
   const handleOneOutClick = () => {
     oneOut.setOneOut(false);
     socket.emit("OneOut", parseInt(roomId));
-    console.log("ennemi");
   };
   /**
    * Une fonction qui génére des divs permettant la séparation de l'écran en 3 parties (en colonne), dont la partie du milieu sera divisé en 3 autres divs(en ligne).
@@ -35,7 +33,6 @@ export function PlayersHands({
    */
   const Section = () => {
     const mains = Hands();
-    console.log("ptn",oneOut)
     //console.log(mains);
     const { length } = mains.otherPlayers;
     const playUser = players.find((player) => player.username === currentUser);

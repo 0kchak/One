@@ -13,7 +13,6 @@ const Room = () => {
   const { setInGame, setDontShow, setInRoom, setRoomId } =
     useContext(ButtonContext);
   const username = user ? user.username : "";
-  console.log("username: ", user);
   const { roomId } = useParams();
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
@@ -36,7 +35,6 @@ const Room = () => {
     setRoomId(roomId);
     if (username !== "" && !socket) {
       const socket = io("https://onegameserv-7349ada989e5.herokuapp.com");
-      console.log("urss")
       socket.emit("authenticate", user.username);
       setSocket(socket);
       socket.emit("joinRoom", { roomId });
@@ -55,7 +53,7 @@ const Room = () => {
     if (socket) {
       const handleJoinRoom = (data) => {
         setPlayers(data);
-        console.log("playerJoined: ", data);
+        //console.log("playerJoined: ", data);
       };
 
       const handleStartGame = () => {
@@ -115,7 +113,6 @@ const Room = () => {
                     }`}</p>
                   ))
               }
-              {console.log(players)}
             </div>
           </div>
         </div>

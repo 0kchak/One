@@ -35,7 +35,6 @@ const Chat = () => {
       const socket = io("http://localhost:8000");
       socket.emit("authenticate", user.username);
       setSocketglobal(socket);
-      console.log(socket);
     }
   }, [username]);
 
@@ -55,7 +54,6 @@ const Chat = () => {
    * @param {string} username - Le nom d'utilisateur pour l'authentification.
    */
   const authenticateWithSocketIO = (socket) => {
-    console.log("userrrrrrrr", user.username);
     socket.emit("authenticate", user.username);
     socket.on("authenticated", (data) => {
       //console.log(data);
@@ -125,7 +123,7 @@ const Chat = () => {
         navigate(`/room/${valRoom}?owner=${false}`);
       });
       socket.on("error", (data) => {
-        console.log("roomID: ", data);
+        //console.log("roomID: ", data);
         setErrorJoin(data);
       });
     }

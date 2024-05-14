@@ -30,7 +30,6 @@ class Signin {
         const { data } = await axios.post("/login", { username, password });
         if (!data.error) {
           const user = {email: data.user.email, username: data.user.username}
-          console.log(user)
           this.setUser(user);
           this.navigate("/dashboard");
         } else {

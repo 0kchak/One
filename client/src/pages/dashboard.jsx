@@ -15,7 +15,6 @@ function Dashboard() {
   const username = user ? user.username : "";
   const setSocketglobal = useContext(UserContext).setSocket;
   const existingSocket = useContext(UserContext).socket;
-  console.log(user)
 
   // Différentes variables utilisées dans l'application, pour gérer l'état coté client.
   const [maxPlayer, setMaxPlayer] = useState(0);
@@ -36,9 +35,6 @@ function Dashboard() {
       const socket = io("https://onegameserv-7349ada989e5.herokuapp.com");
       socket.emit("authenticate", user.username);
       setSocketglobal(socket);
-    } else { 
-      console.log(username, "nom vide");
-      console.log(user)
     }
   }, [username]);
 
@@ -47,7 +43,6 @@ function Dashboard() {
   };
 
   const createRoom = () => {
-    console.log(socket)
     if (socket) {
       socket.emit("createRoom", { maxPlayers: maxPlayer, bot: isChecked });
       socket.on("roomCreated", (data) => {
@@ -69,7 +64,6 @@ function Dashboard() {
         navigate(`/room/${valRoom}`);
       });
       socket.on("error", (data) => {
-        console.log("roomID: ", data);
         setErrorJoin(data);
       });
     }

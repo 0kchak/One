@@ -32,7 +32,6 @@ const Tchat = ({ roomId , hidden }) => {
    * Envoie le message du joueur au serveur avec et le numéro de la room et le nom d'utilisateur.
    */
   const sendMessage = () => {
-    console.log(socket, username);
     if (newMsg !== "" && socket) {
           socket.emit("message", {
             player: username,
@@ -49,7 +48,6 @@ const Tchat = ({ roomId , hidden }) => {
    */
   const renderMessages = () => {
     let sameUser = "";
-    console.log("msg : ", messages);
     return messages.map((msg, index) => {
       const msgliste = (
         <div

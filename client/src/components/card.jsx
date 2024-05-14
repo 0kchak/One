@@ -50,7 +50,7 @@ export function Card({ valeur, playableCard, setItems, players, one, index }) {
 
   useEffect(() => {
     if (valeur) {
-      console.log("debug import", valeur, index);
+      //console.log("debug import", valeur, index);
       import(`../assets/cartes/${valeur.color}_${valeur.value}.png`)
         .then((image) => {
           setImagePath(image.default);
@@ -67,13 +67,10 @@ export function Card({ valeur, playableCard, setItems, players, one, index }) {
       playableCard !== null &&
       sameValueCard.length === 0
     ) {
-      console.log(playableCard, "debug playablecard");
       if (playableCard.length === 0) {
         playable = "cannotPlay";
       } else {
         for (const card of playableCard) {
-          console.log(card, "debug card");
-
           if (card.color === valeur.color && card.value === valeur.value) {
             playable = "";
             break;
@@ -106,7 +103,6 @@ export function Card({ valeur, playableCard, setItems, players, one, index }) {
    *
    */
   const handleCardClick = (event) => {
-    console.log(valeur, "connard");
     if (
       event.currentTarget.parentElement.className !== "lastcard" &&
       event.currentTarget.classList.value == "card  " &&
@@ -127,7 +123,6 @@ export function Card({ valeur, playableCard, setItems, players, one, index }) {
         setItems([interfaceCard]);
         return;
       }
-      console.log(userHand.length, one);
       if (userHand.length === 2 && one === false) {
         condition = true;
       }
@@ -151,7 +146,6 @@ export function Card({ valeur, playableCard, setItems, players, one, index }) {
       } else {
         socket.emit("playCard", { cardPlayed: send });
         if (condition === true) {
-          console.log("ici");
           socket.emit("One", parseInt(roomId));
         }
       }

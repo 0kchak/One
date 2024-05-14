@@ -59,7 +59,6 @@ function Page1() {
         setCurrentColor(data.currentColor);
         setTurn(data.currentTurn);
         setPlayableCard(data.playableCards);
-        console.log(players);
       });
 
       socket.on("updateDraw", (data) => {
@@ -72,14 +71,12 @@ function Page1() {
           if (playerIndex !== -1) {
             updatedPlayers[playerIndex].hand = data.hand.newhand;
           }
-          console.log(updatedPlayers);
           return updatedPlayers;
         });
         setPlayableCard(data.playableCards);
       });
 
       socket.on("hasPlayed", (data) => {
-        console.log("hasPlayed", data)
         setFausse(data.lastCard);
         setCurrentColor(data.currentColor);
         setTurn(data.currentTurn);
@@ -117,12 +114,10 @@ function Page1() {
       });
 
       socket.on("OneOutPossible", () => {
-        console.log("one out possible");
         setOneOut(true);
       });
 
       socket.on("updateOne", (data) => {
-        console.log(data);
         setPlayers((prevPlayers) => {
           const updatedPlayers = [...prevPlayers];
           const playerIndex = updatedPlayers.findIndex(
@@ -168,7 +163,6 @@ function Page1() {
             <div className="endContainer">
               <h1 className="endTitle">{winner} has won the game!</h1>
               <hr></hr>
-              {console.log(ranking)}
               {ranking.map((player, index) => (
                 <p className="rankingPlayer" key={index}>
                   {index === 0 && "👑"} {player.username} : {player.cardCount}
